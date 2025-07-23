@@ -15,7 +15,7 @@ defineProps<Props>();
     <div
       v-for="country in countries"
       :key="country.code"
-      class="border border-gray-300 rounded p-3"
+      class="p-3"
     >
       <CountryItem  :country="country" />
     </div>
