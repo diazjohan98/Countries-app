@@ -10,30 +10,15 @@ defineProps<Props>();
 </script>
 
 <template>
-  <div class="h-56 sm:h-36">
-    <img
-      class="h-56 sm:h-36 w-full"
-      :src="country.flags.png"
-      :alt="country.flags.alt"
-    />
+  <div class="bg-white dark:bg-gray-800 text-gray-800 dark:text-white shadow-md rounded-xl overflow-hidden transition-all duration-500 hover:shadow-xl hover:scale-[1.02]">
+  <img :src="country.flags.png" :alt="country.flags.alt" class="h-40 w-full object-cover" />
+
+  <div class="p-4">
+    <h4 class="text-lg font-bold">{{ country.name.common }}</h4>
+    <p class="text-sm"><span class="font-medium">Capital:</span> {{ country.capital?.[0] }}</p>
+    <p class="text-sm"><span class="font-medium">Población:</span> {{ country.population.toLocaleString() }}</p>
+    <p class="text-sm"><span class="font-medium">Región:</span> {{ country.region }}</p>
   </div>
-  <h4 class="text-xl font-bold text-gray-500">{{ country.name.common }}</h4>
-  <p class="text-sm text-gray-500">
-    Capital:
-    <span
-      v-for="(capital, idx) in country.capital"
-      :key="idx"
-      class="font-bold"
-    >
-      {{ capital  }} <template>, </template>
-    </span>
-  </p>
-  <p class="text-sm text-gray-500">
-    Población:
-    <span class="font-bold"> {{ country.population.toLocaleString() }} </span>
-  </p>
-  <p class="text-sm text-gray-500">
-    Region:
-    <span class="font-bold"> {{ country.region }} </span>
-  </p>
+</div>
 </template>
+
