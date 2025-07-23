@@ -1,7 +1,30 @@
 <script setup lang="ts">
-import PageHeader from './components/PageHeader.vue';
+import { onMounted, ref } from "vue";
+
+import PageHeader from "./components/PageHeader.vue";
+import CountryList from "./components/CountryList.vue";
+import axiosClient from "./utils/axios";
+import { Country } from "./models/country.model";
+
+const countries = ref<Country[]>([]);
+
+const fetchCounries = async () => {
+  try {
+    const { data } = await axiosClient.get("/all?fields=name,flags,population,region,capital");
+    countries.value = data;
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+onMounted(() => {
+  fetchCounries();
+});
 </script>
 
 <template>
-    <PageHeader />    <!-- Other components or content can be added here -->
+  <PageHeader />
+  <div class="container max-w.screen-lg mx-auto px-6">
+    <CountryList :countries="countries" />
+  </div>
 </template>
