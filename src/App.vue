@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { onMounted, ref, watch } from "vue";
+import { computed, onMounted, ref, watch } from "vue";
 
 import PageHeader from "./components/PageHeader.vue";
 import CountryList from "./components/CountryList.vue";
@@ -57,15 +57,15 @@ const changePage = (newPage: number) => {
 onMounted(() => {
   fetchCounries();
 });
+watch([countries, search, page], () => {
+  const currentList = countries.value
+    .filter((country) =>
+      country.name.common.toLowerCase().includes(search.value.toLowerCase())
+    )
+    .sort((a, b) => a.name.common.localeCompare(b.name.common)); // 👈 orden alfabético
 
-watch([countries, filteredCountries, search, page], () => {
-  const currentList =
-    filteredCountries.value.length <= 0 && search.value === ""
-      ? countries.value
-      : filteredCountries.value;
-
-  sliceCountries(currentList);
   totalItems.value = currentList.length;
+  sliceCountries(currentList);
 });
 </script>
 
@@ -84,7 +84,7 @@ watch([countries, filteredCountries, search, page], () => {
       <SearchInput
         v-model="search"
         placeholder="Search by countries name"
-        @input="filterCountries"
+        @input="() => (page = 1)"
       />
       <div class="mt-8 mb-8 flex justify-center space-x-6">
         <button
