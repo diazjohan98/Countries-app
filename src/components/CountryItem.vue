@@ -16,8 +16,8 @@ defineProps<Props>();
   <div class="p-4">
     <h4 class="text-lg font-bold">{{ country.name.common }}</h4>
     <p class="text-sm"><span class="font-medium">Capital:</span> {{ country.capital?.[0] }}</p>
-    <p class="text-sm"><span class="font-medium">Población:</span> {{ country.population.toLocaleString() }}</p>
-    <p class="text-sm"><span class="font-medium">Región:</span> {{ country.region }}</p>
+    <p class="text-sm"><span class="font-medium">Population:</span> {{ country.population.toLocaleString() }}</p>
+    <p class="text-sm"><span class="font-medium">Region:</span> {{ country.region }}</p>
   </div>
 </div>
 </template>
