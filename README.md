@@ -23,7 +23,7 @@ Sigue estos pasos para clonar e iniciar el proyecto localmente:
 
 ```bash
 # 1. Clona el repositorio
-git clone https://github.com/tu-usuario/countries-app.git
+git clone https://github.com/diazjohan98/Countries-app.git
 
 # 2. Entra a la carpeta del proyecto
 cd countries-app
@@ -37,8 +37,11 @@ npm run dev
 src/
 ├── assets/              # Archivos estáticos
 ├── components/          # Componentes reutilizables
-├── views/               # Vistas principales
-├── router/              # Enrutamiento
-├── services/            # Consumo de API con Axios
-├── types/               # Tipos de TypeScript
+├── models/              #  Tipos de TypeScript
+├── utils/               # Consumo de API con Axios
 └── App.vue              # Componente raíz
+
+🔗 Demo en línea
+Puedes ver la aplicación funcionando en este enlace:
+
+👉 https://regal-chebakia-3ced95.netlify.app/
